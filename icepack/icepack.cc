@@ -649,6 +649,18 @@ void FpgaConfig::read_ascii(std::istream &ifs)
 			continue;
 		}
 
+		if (command == ".warmboot")
+		{
+			is >> this->warmboot;
+
+			if (this->warmboot != "disabled" &&
+			    this->warmboot != "enabled")
+				error("Unknown warmboot setting '%s'.\n",
+				      this->warmboot.c_str());
+
+			continue;
+		}
+
 		if (command == ".io_tile" || command == ".logic_tile" || command == ".ramb_tile" || command == ".ramt_tile")
 		{
 			if (!got_device)
