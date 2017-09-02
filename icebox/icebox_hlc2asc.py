@@ -549,8 +549,7 @@ class Main:
         #    self.coldboot = parse_bool(fields[2])
         elif fields[0] == 'warmboot' and fields[1] == '=' \
                 and self.warmboot is None:
-            # parsed but ignored (can't be represented in IceStorm .asc format)
-            self.warmboot = parse_bool(fields[2])
+            self.ic.warmboot = self.warmboot = parse_bool(fields[2])
         else:
             raise ParseError
 

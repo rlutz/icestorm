@@ -701,7 +701,7 @@ class Fabric:
         print('')
         # internal_configuration_oscillator_frequency = low | medium | high
         #print('coldboot = off')
-        print('warmboot = on')  # IceStorm assumes this to be always on
+        print('warmboot = %s' % {False: 'off', True: 'on'}[self.ic.warmboot])
 
         for xy in sorted(self.tiles.keys(), key = lambda xy: (xy[1], xy[0])):
             self.tiles[xy].printout(options)
